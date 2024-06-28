@@ -1,0 +1,33 @@
+.profile_container{
+    width: 100%;
+}
+.main_profile_section{
+    background-color: #51517d;
+}
+.user_profile_banner_img{
+    width: 100%;
+    height: 150px;
+    background-color: #108172;
+}
+.user_info{
+    background-color: aquamarine;
+    margin: 1rem 0;
+}
+.profile_menu{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11113c;
+    padding: 0.5rem 0rem;
+}
+.profile_menu ul{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    color : #ffffff;
+}
