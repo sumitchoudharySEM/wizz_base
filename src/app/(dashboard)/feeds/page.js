@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Featured } from "@/components";
+// import { Featured } from "@/components";
 const Feeds = () => {
   return (
     <>
-      <Featured />
+    <h1>hii</h1>
+      {/* <Featured /> */}
     </>
   );
 };

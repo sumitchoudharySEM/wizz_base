@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import "./dashboard_layout.css";
 
 import { Sidebar } from "@/components";
-import { redirect } from "next/navigation";
 import Link from "next/link";
-import { toast } from "react-toastify";
 
-import { useAccount, useWriteContract, useReadContract } from "wagmi";
+import { useAccount, useReadContract } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
 import abi from "../contract/abi.json";
 
