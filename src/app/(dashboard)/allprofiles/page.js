@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-import { CONTRACT_ADDRESS } from "../app/constants";
-import ShortProfile from "./rightsidebar_compnents/ShortProfile";
+import { CONTRACT_ADDRESS } from "../../constants";
 import { useAccount, useReadContract } from "wagmi";
-import abi from "../app/contract/abi.json";
+import abi from "../../contract/abi.json";  
+import ShortProfile from "../../../components/rightsidebar_compnents/ShortProfile";
 
-
-const Connection = () => {
+const AllProfiles = () => {
   const { address } = useAccount();
   const [loading, setLoading] = useState(true); 
-  const [allProfilesToDisplay, setAllProfilesToDisplay] = useState([]);
+  const [allProfilesToDispla, setAllProfilesToDispla] = useState([]);
   const [userProfile, setUserProfile] = useState({
     name: "",
     username: "",
@@ -52,10 +51,10 @@ useEffect(() => {
   if (allProfiles !== undefined && userProfile.name !== "") {
     console.log("allProfiles:", allProfiles);
     // make all profile display that the user follows
-    // const profiles = allProfiles.filter((item) => userProfile.following.includes(item.username));
-    setAllProfilesToDisplay(allProfiles.filter((item) => userProfile.following.includes(item.username)));
+    // const profiles = allProfiles.filter((item) => item.username !== userProfile.username);
+    setAllProfilesToDispla(allProfiles.filter((item) => item.username !== userProfile.username));
   }
-}, [allProfiles, userProfile]);
+}, [allProfiles, error, userProfile]);
 
   useEffect(() => {
     if (userProfile && userProfile.following && allProfiles !== undefined) {
@@ -76,7 +75,7 @@ useEffect(() => {
       {/* list */}
       <h2 className='mb-6'>You Are Following</h2>
       <div className="flex flex-col ">
-      {allProfilesToDisplay.length > 0 && allProfilesToDisplay.map((item, index) => (
+      {allProfilesToDispla.length > 0 && allProfilesToDispla.map((item, index) => (
           <div key={index}>
             <ShortProfile data={item} userProfile={userProfile} setbio={true}/>
           </div>
@@ -86,4 +85,4 @@ useEffect(() => {
   );
 };
 
-export default Connection;
+export default AllProfiles;
