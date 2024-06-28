@@ -179,7 +179,7 @@ const Navigation = ({userProfile}) => {
           </div>
         </div>
       </Link>{" "}
-      <Link href={`/profile/${userProfile.owner}`}>
+      <Link href={`/profile/${userProfile.username}`}>
         <div className={`${activeBtn == 5 ? activ : inactiv} `}>
           <div className="flex space-x-3 p-2 px-3  font-medium ">
             <div className="flex flex-col justify-center">
@@ -203,7 +203,7 @@ const Navigation = ({userProfile}) => {
           </div>
         </div>
       </Link>
-      <Link href={`/profile/${userProfile.owner}`}>
+      <Link href={`/profile/${userProfile.username}`}>
         <div className={`${activeBtn == 6 ? activ : inactiv} `}>
           <div className="flex space-x-3 p-2 px-3 lg:hidden  font-medium ">
             <div className="flex flex-col justify-center">

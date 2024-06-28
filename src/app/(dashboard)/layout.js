@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./dashboard_layout.css";
 
-import { Sidebar } from "@/components";
+import { Sidebar,RightSidebar  } from "@/components";
 import Link from "next/link";
 
 import { useAccount, useReadContract } from "wagmi";
@@ -151,7 +151,7 @@ console.log("userProfile:", userProfile);
 
             <div className="w-[30%] lg:flex hidden bg-[#14161b] mr-4 0">
               <div className="fixed w-[30%] right-2">
-                {/* <RightSidebar userProfile={userProfile} /> */}
+                <RightSidebar userProfile={userProfile} />
               </div>{" "}
             </div>
           </div>
