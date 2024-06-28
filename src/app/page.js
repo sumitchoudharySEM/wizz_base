@@ -8,14 +8,13 @@ import { redirect } from "next/navigation";
 import {
   CONTRACT_ADDRESS,
   PINATA_JWT,
-  NEXT_PUBLIC_GATEWAY_URL,
-  USERNAME_TABLE,
 } from "./constants";
-import { abi } from "./contract/abi.json";
+import abi  from "./contract/abi.json";
 
 export default function Home() {
 
   const { address } = useAccount()
+  const [isAccount , setIsAccount] = useState()
 
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -25,12 +24,13 @@ export default function Home() {
     fullname: "",
     bio: "",
     imagecid: "",
+    bannercid: "",
   });
 
   const { data: isAccountData, error: isAccountError } = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
-    functionName: "checkAccount",
+    functionName: "doesAccountExist",
     args: [address],
   });
 
@@ -39,11 +39,12 @@ export default function Home() {
       console.log("isAccountData:", isAccountData);
       if (isAccountData == true) {
         redirect("/feeds");
+      } else {
+        setIsAccount(false);
+        console.log("Account does not exist");
       }
-    } else {
-      console.log("isAccountData else:", isAccountData);
-    }
-  }, [isAccountData]);
+    } 
+  }, [isAccountData, isAccountError, address]);
 
   const {
     data: createUserData,
@@ -60,11 +61,8 @@ export default function Home() {
       address: CONTRACT_ADDRESS,
       abi,
       functionName: "createUser",
-      args: [newUser.username, newUser.fullname, newUser.bio, cid, "imgref", "bannerref"],
+      args: [newUser.username, newUser.fullname, newUser.bio, cid, newUser.bannercid],
     });
-    console.log("createUser function called 2");
-    console.log("createUserData:", createUserData);
-    console.log("createUserError:", createUserError);
 
     }
     catch (error) {
@@ -73,11 +71,14 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log("createUserData:", createUserData);
+    console.log("createUserError:", createUserError);
+    console.log("createUserIsPending:", createUserIsPending);
     if (createUserData !== undefined) {
       toast.success("User created successfully");
       location.reload();
       console.log("createUserData:", createUserData);
-    }
+    } 
   }, [createUserData, createUserError, createUserIsPending]);
 
   function changeHandler(e) {
@@ -111,7 +112,6 @@ export default function Home() {
         }
       );
       const resData = await res.json();
-      setImageCID(resData.IpfsHash); 
       console.log("image response", resData.IpfsHash);
       return resData.IpfsHash; 
     } catch (error) {
@@ -142,7 +142,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {address && isAccountData && isAccountData == true ? (
+          {address && isAccount == false ? (
             <>
               <div className="flex md:flex-row flex-col">
                 <input
