@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./dashboard_layout.css";
 
-import { Sidebar,RightSidebar  } from "@/components";
+import { Sidebar, RightSidebar } from "@/components";
 import Link from "next/link";
 
 import { useAccount, useReadContract } from "wagmi";
@@ -73,11 +73,30 @@ export default function UserInfoLayout({ children }) {
     }
   }, [profileResource, isError]);
 
-console.log("userProfile:", userProfile);
+  if (address == undefined) {
+    return (
+      <>
+        <div className="flex jus flex-col  justify-center h-[100vh] width-[100vw] align-middle ">
+          <div className="flex jus flex-col  justify-center align-middle ">
+            <h3 className=" m-auto p-6 text-center">
+              Create an account or log in to continue to Wizz.
+            </h3>
+            <Link
+              className="bg-[#7501E9] py-3 w-48 text-center text text-white border-none m-auto rounded-xl "
+              href="/"
+            >
+              Register | Login
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div>
-        {userProfile.owner == ""  ? (
+        {userProfile.owner == "" ? (
           <>
             {isLoading == true ? (
               <div className="flex jus justify-center h-[100vh] width-[100vw] align-middle ">

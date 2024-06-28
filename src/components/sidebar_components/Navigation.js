@@ -11,10 +11,10 @@ const Navigation = ({userProfile}) => {
   // return <p>Current pathname: {pathname}</p>
   
   useEffect(() => {
-    console.log("pathname", pathname);
+    // console.log("pathname", pathname);
     let cutpathname = pathname.split("/")
 
-    console.log("cutpathname", cutpathname);
+    // console.log("cutpathname", cutpathname);
     if (cutpathname[1] === "feeds") {
       setActiveBtn(1);
     } 

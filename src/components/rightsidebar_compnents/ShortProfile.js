@@ -1,8 +1,11 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import {NEXT_PUBLIC_GATEWAY_URL } from "../../app/constants";
+import {CONTRACT_ADDRESS, NEXT_PUBLIC_GATEWAY_URL } from "../../app/constants";
 import Link from "next/link";
+import { useWriteContract,} from 'wagmi'
+import { toast } from "react-toastify";
+import abi from "../../app/contract/abi.json";
 
 const ShortProfile = (props) => {
   
@@ -20,6 +23,30 @@ const ShortProfile = (props) => {
       setIsFollowing(false);
     }
   }, []);
+
+
+  const { data, error, isPending, writeContract: followUser } = useWriteContract();
+  useEffect(() => {
+    if (data !== undefined) {
+      console.log("data:", data);
+      if (data) {
+        toast.success("Followed successfully");
+        toggleFollow();
+      }
+    }
+  } , [data, error, isPending]);
+
+  const { data: unfollowData, error: unfollowError, isPending: unfollowIsPending, writeContract: unfollowUser } = useWriteContract();
+  useEffect(() => {
+    if (unfollowData !== undefined) {
+      console.log("unfollowData:", unfollowData);
+      if (unfollowData) {
+        toast.success("Unfollowed successfully");
+        toggleFollow();
+      }
+    }
+  }, [unfollowData, unfollowError, unfollowIsPending]);
+
 
   return (
     <>
@@ -46,44 +73,24 @@ const ShortProfile = (props) => {
         <div className="flex flex-col justify-center">
           {isFollowing ? (
             <button
-              // onClick={async () => {
-              //   const transaction = {
-              //     data: {
-              //       function: `${MODULEADDRESS}::wizz::unfollow_profile`,
-              //       functionArguments: [props.data],
-              //     },
-              //   };
-
-              //   const response = await signAndSubmitTransaction(transaction);
-
-              //   await aptos.waitForTransaction({
-              //     transactionHash: response.hash,
-              //   });
-              //   toggleFollow();
-              //   toast.success("Unfollowed successfully");
-              // }}
+              onClick={async () => unfollowUser({
+                address: CONTRACT_ADDRESS,
+                abi,
+                functionName: "unfollow",
+                args: [props.data.username],
+              })}
               className=" border-[1px] py-2 border-white px-7 w-full text-sm text-white  rounded-full font-medium"
             >
               Unfollow
             </button>
           ) : (
             <button
-              // onClick={async () => {
-              //   const transaction = {
-              //     data: {
-              //       function: `${MODULEADDRESS}::wizz::follow_profile`,
-              //       functionArguments: [props.data],
-              //     },
-              //   };
-
-              //   const response = await signAndSubmitTransaction(transaction);
-
-              //   await aptos.waitForTransaction({
-              //     transactionHash: response.hash,
-              //   });
-              //   toggleFollow();
-              //   toast.success("Followed successfully");
-              // }}
+              onClick={() => followUser({
+                address: CONTRACT_ADDRESS,
+                abi,
+                functionName: "follow",
+                args: [props.data.username],
+              })}
               className="bg-[#7501E9] py-2 px-7 w-full text-sm text-white border-none rounded-full font-medium"
             >
               Follow
