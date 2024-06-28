@@ -65,8 +65,8 @@ export default function UserInfoLayout({ children }) {
         bio: profileResource.bio,
         image_cid: profileResource.imageCID,
         banner_cid: profileResource.bannerCID,
-        profile_id: profileResource.profile_id,
-        following: profileResource.followings,
+        profile_id: profileResource.userNumber,
+        following: profileResource.following,
         followers: profileResource.followers,
       });
       setLoading(false);
