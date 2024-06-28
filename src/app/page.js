@@ -53,7 +53,8 @@ export default function Home() {
   } = useWriteContract();
 
   const createUser = async (cid) => {
-    console.log("createUser function called");
+    try {
+      console.log("createUser function called");
 
     createUserWriteContract({
       address: CONTRACT_ADDRESS,
@@ -64,10 +65,16 @@ export default function Home() {
     console.log("createUser function called 2");
     console.log("createUserData:", createUserData);
     console.log("createUserError:", createUserError);
+
+    }
+    catch (error) {
+      console.error("Error during submission:", error);
+    }
   };
 
   useEffect(() => {
     if (createUserData !== undefined) {
+      toast.success("User created successfully");
       location.reload();
       console.log("createUserData:", createUserData);
     }
