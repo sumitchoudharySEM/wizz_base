@@ -310,4 +310,16 @@ contract WizzMainContract {
 
         return profiles[_username];
     }
+
+    // Function to get a complete user profile by user address
+    function getUserProfileByAddress(address _userAddress)
+        external
+        view
+        returns (UserProfile memory)
+    {
+        string memory username = userAddressToUsername[_userAddress];
+        require(bytes(username).length != 0, "User does not exist");
+
+        return profiles[username];
+    }
 }
