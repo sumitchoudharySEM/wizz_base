@@ -2,7 +2,7 @@
 
 pragma solidity >=0.8.11;
 
-contract WizzMainContract {
+contract ProfileContract {
     address public Owner;
     string[] public users;
     uint256 public userCount;
@@ -29,7 +29,7 @@ contract WizzMainContract {
     struct UserPost {
         uint256 postNumber;
         string content;
-        address creatorAddress;
+        string creatorUsername;
         uint256 timeCreated;
         string IPFSImagesRef;
         bool visibility;
@@ -244,7 +244,7 @@ contract WizzMainContract {
         allPostsByNumber[postCount] = UserPost({
             postNumber: postCount,
             content: _content,
-            creatorAddress: msg.sender,
+            creatorUsername: creatorUsername,
             timeCreated: block.timestamp,
             IPFSImagesRef: _IPFSImagesRef,
             visibility: _visibility,
@@ -321,5 +321,23 @@ contract WizzMainContract {
         require(bytes(username).length != 0, "User does not exist");
 
         return profiles[username];
+    }
+
+    //get username by address
+    function getUsernameByAddress(address _userAddress)
+        external
+        view
+        returns (string memory)
+    {
+        require(
+            _userAddress != address(0),
+            "Invalid address"
+        );
+        string memory username = userAddressToUsername[_userAddress];
+        require(
+            bytes(username).length != 0,
+            "User does not exist"
+        );
+        return username;
     }
 }

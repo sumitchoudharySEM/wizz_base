@@ -1,5 +1,112 @@
 [
 	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_content",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_IPFSImagesRef",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "_visibility",
+				"type": "bool"
+			},
+			{
+				"internalType": "string",
+				"name": "_category",
+				"type": "string"
+			}
+		],
+		"name": "createPost",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_bio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageCID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_bannerCID",
+				"type": "string"
+			}
+		],
+		"name": "createUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_bio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageCID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_bannerCID",
+				"type": "string"
+			}
+		],
+		"name": "editUserProfile",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userToFollow",
+				"type": "string"
+			}
+		],
+		"name": "follow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -74,6 +181,19 @@
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userToUnfollow",
+				"type": "string"
+			}
+		],
+		"name": "unfollow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -91,19 +211,6 @@
 		],
 		"name": "Unfollow",
 		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "Owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	},
 	{
 		"inputs": [
@@ -126,9 +233,9 @@
 				"type": "string"
 			},
 			{
-				"internalType": "address",
-				"name": "creatorAddress",
-				"type": "address"
+				"internalType": "string",
+				"name": "creatorUsername",
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",
@@ -157,67 +264,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "_content",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_IPFSImagesRef",
-				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "_visibility",
-				"type": "bool"
-			},
-			{
-				"internalType": "string",
-				"name": "_category",
-				"type": "string"
-			}
-		],
-		"name": "createPost",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_username",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_bio",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_imageCID",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_bannerCID",
-				"type": "string"
-			}
-		],
-		"name": "createUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "_userAddress",
 				"type": "address"
@@ -232,52 +278,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_username",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_bio",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_imageCID",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_bannerCID",
-				"type": "string"
-			}
-		],
-		"name": "editUserProfile",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_userToFollow",
-				"type": "string"
-			}
-		],
-		"name": "follow",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -297,9 +297,9 @@
 						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "creatorAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "creatorUsername",
+						"type": "string"
 					},
 					{
 						"internalType": "uint256",
@@ -322,7 +322,7 @@
 						"type": "string"
 					}
 				],
-				"internalType": "struct WizzMainContract.UserPost[]",
+				"internalType": "struct ProfileContract.UserPost[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -387,9 +387,28 @@
 						"type": "string[]"
 					}
 				],
-				"internalType": "struct WizzMainContract.UserProfile[]",
+				"internalType": "struct ProfileContract.UserProfile[]",
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			}
+		],
+		"name": "getUsernameByAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -458,7 +477,7 @@
 						"type": "string[]"
 					}
 				],
-				"internalType": "struct WizzMainContract.UserProfile",
+				"internalType": "struct ProfileContract.UserProfile",
 				"name": "",
 				"type": "tuple"
 			}
@@ -529,9 +548,22 @@
 						"type": "string[]"
 					}
 				],
-				"internalType": "struct WizzMainContract.UserProfile",
+				"internalType": "struct ProfileContract.UserProfile",
 				"name": "",
 				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -602,19 +634,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_userToUnfollow",
-				"type": "string"
-			}
-		],
-		"name": "unfollow",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
