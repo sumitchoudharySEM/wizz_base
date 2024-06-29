@@ -22,13 +22,29 @@ const PostList = ({userProfile}) => {
 
   useEffect(() => {
     if (Posts !== undefined) {
-        // if (pathname[1] == "followingfeeds") {
-        //     const posts = Posts.filter((item) => userProfile.following.includes(item.username));
-        //     setAllPosts(posts);
-        //     }
-        // else {
+        console.log(pathname)
+        console.log("Posts:", Posts);
+        if (pathname[1] == "followingfeeds") {
+            setAllPosts(Posts.filter((item) => userProfile.following.includes(item.creatorUsername)));
+            console.log("Posts:", Posts.filter((item) => userProfile.following.includes(item.creatorUsername)));
+        }
+        else if (pathname[1] == "profile") {
+
+            if(pathname[3] && pathname[3] == "work") {
+                console.log("condition 1 run")
+                setAllPosts(Posts.filter((item) => item.category == "work" && item.creatorUsername == userProfile.username));
+            } else if(pathname[3] && pathname[3] == "certificates") {
+                console.log("condition 2 run")
+                setAllPosts(Posts.filter((item) => item.category == "certificatation" && item.creatorUsername == userProfile.username));
+            } else {
+                console.log("condition 3 run")
+                setAllPosts(Posts.filter((item) => item.creatorUsername == userProfile.username));
+            }
+        }
+        else {
+            console.log("condition 4 run")
             setAllPosts(Posts);
-        // }
+        }
     }
   }, [Posts, isError]);
 

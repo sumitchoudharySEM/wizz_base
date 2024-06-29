@@ -12,8 +12,8 @@ const PostCard = (props) => {
   const { data: owner, error: isError } = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
-    functionName: "getUserProfileByAddress",
-    args: [props.item.creatorAddress],
+    functionName: "getUserProfileByUsername",
+    args: [props.item.creatorUsername],
   });
 
   useEffect(() => {
