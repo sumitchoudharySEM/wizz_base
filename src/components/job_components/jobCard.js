@@ -47,7 +47,7 @@ const JobCard = (props) => {
         </div>
 
         {/* View Details Button */}
-        <Link href={`/jobs/${props.item.jobID}`}>
+        <Link href={`/jobs/${props.item.jobId}`}>
         <button className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
           View Details
         </button>
