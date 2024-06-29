@@ -277,6 +277,76 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "getAllJobs",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "shortDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "descriptionIPFS",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "employer",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "employerUsername",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "status",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "jobType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string[]",
+						"name": "applicantsUsername",
+						"type": "string[]"
+					}
+				],
+				"internalType": "struct JobMarketplaceContract.Job[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -290,6 +360,82 @@
 				"internalType": "uint256[]",
 				"name": "",
 				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_jobid",
+				"type": "uint256"
+			}
+		],
+		"name": "getJobByJobID",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "shortDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "descriptionIPFS",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "employer",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "employerUsername",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "status",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "jobType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string[]",
+						"name": "applicantsUsername",
+						"type": "string[]"
+					}
+				],
+				"internalType": "struct JobMarketplaceContract.Job",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",

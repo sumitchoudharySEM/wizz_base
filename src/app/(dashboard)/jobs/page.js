@@ -1,5 +1,7 @@
+"use client"
 import React from "react";
 import Link from "next/link";
+import { JobList } from "@/components";
 
 const ViewJobs = () => {
   return (
@@ -21,7 +23,7 @@ const ViewJobs = () => {
             </Link>{" "}
           </div>{" "}
         </div>
-        jobs
+        <JobList />
       </div>
     </>
   );

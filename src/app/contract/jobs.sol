@@ -11,7 +11,7 @@ interface IProfileContract {
 
 contract JobMarketplaceContract {
     address public Owner;
-    IProfileContract public profileContract; // Reference to the ProfileContract
+    IProfileContract public profileContract; 
     uint256 public jobCount;
     uint256 public applicationCount;
 
@@ -19,14 +19,14 @@ contract JobMarketplaceContract {
         uint256 jobId;
         string title;
         string shortDescription;
-        string descriptionIPFS; // IPFS hash for detailed job description
+        string descriptionIPFS; 
         address employer;
         string employerUsername;
-        uint256 reward; // Reward in wei
-        string status; // E.g., "Open", "Closed", "Completed"
-        string jobType; // Type of job: "Freelancing", "Bounty", "Internship", etc.
-        uint256 timestamp; // Timestamp when the job was created
-        string[] applicantsUsername; // Usernames of applicants
+        uint256 reward; 
+        string status; 
+        string jobType;
+        uint256 timestamp; 
+        string[] applicantsUsername; 
     }
 
     struct Application {
@@ -34,9 +34,9 @@ contract JobMarketplaceContract {
         uint256 jobId;
         address applicant;
         string applicantUsername;
-        string applicationIPFS; // IPFS hash for application details
-        string status; // E.g., "Submitted", "Accepted", "Rejected"
-        uint256 timestamp; // Timestamp when the application was submitted
+        string applicationIPFS; 
+        string status; 
+        uint256 timestamp; 
     }
 
     mapping(uint256 => Job) public jobs;
@@ -54,7 +54,6 @@ contract JobMarketplaceContract {
         applicationCount = 0;
     }
 
-    // Function to create a job
     function createJob(
         string memory _title,
         string memory _shortDescription,
@@ -85,7 +84,6 @@ contract JobMarketplaceContract {
         emit JobCreated(jobCount, _title, msg.sender, _reward);
     }
 
-    // Function to apply for a job
     function applyForJob(uint256 _jobId, string memory _applicationIPFS) external {
         Job storage job = jobs[_jobId];
         require(job.jobId != 0, "Job does not exist");
@@ -111,7 +109,6 @@ contract JobMarketplaceContract {
         emit ApplicationSubmitted(applicationCount, _jobId, msg.sender);
     }
 
-    // Function to update job status
     function updateJobStatus(uint256 _jobId, string memory _status) external {
         Job storage job = jobs[_jobId];
         require(job.jobId != 0, "Job does not exist");
@@ -120,7 +117,6 @@ contract JobMarketplaceContract {
         job.status = _status;
     }
 
-    // Function to update application status
     function updateApplicationStatus(uint256 _applicationId, string memory _status) external {
         Application storage application = applications[_applicationId];
         require(application.applicationId != 0, "Application does not exist");
@@ -131,17 +127,43 @@ contract JobMarketplaceContract {
         application.status = _status;
     }
 
-    // Function to get all jobs created by an employer
     function getJobsByEmployer(string memory _employerUsername) external view returns (uint256[] memory) {
         return employerJobs[_employerUsername];
     }
 
-    // Function to get all applications submitted by an applicant
     function getApplicationsByApplicant(string memory _applicantUsername) external view returns (uint256[] memory) {
         return applicantApplications[_applicantUsername];
     }
 
-    // Function to set the profile contract address (only Owner)
+    function getJobByJobID(uint256 _jobid)
+        external
+        view
+        returns (Job memory)
+    {
+        return jobs[_jobid];
+    }
+
+     function getAllJobs() external view returns (Job[] memory) {
+        Job[] memory allJobs = new Job[](jobCount);
+        for (uint256 i = 1; i <= jobCount; i++) {
+            Job storage job = jobs[i];
+            allJobs[i-1] = Job({
+                jobId: job.jobId,
+                title: job.title,
+                shortDescription: job.shortDescription,
+                descriptionIPFS: job.descriptionIPFS,
+                employer: job.employer,
+                employerUsername: job.employerUsername,
+                reward: job.reward,
+                status: job.status,
+                jobType: job.jobType,
+                timestamp: job.timestamp,
+                applicantsUsername: new string[](0x0)
+            });
+        }
+        return allJobs;
+    }
+
     function setProfileContractAddress(address _profileContractAddress) external {
         require(msg.sender == Owner, "Only the owner can set the profile contract address");
         profileContract = IProfileContract(_profileContractAddress);

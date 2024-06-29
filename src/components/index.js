@@ -6,5 +6,6 @@ import Topbar from "./profile_components/Topbar";
 import Connection from "./connection";
 import PostCard from "./postCard";
 import PostList from "./postList";
+import JobList from "./job_components/jobList";
 
-export { Sidebar, RightSidebar, CreatePost, Featured, Topbar, Connection, PostCard, PostList };
+export { Sidebar, RightSidebar, CreatePost, Featured, Topbar, Connection, PostCard, PostList, JobList };
