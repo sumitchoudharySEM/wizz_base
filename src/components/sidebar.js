@@ -1,5 +1,6 @@
 import React from "react";
 import BottomBtn from "./sidebar_components/bottomBtn";
+import CreateJob from "./sidebar_components/createJob";
 import Logo from "./sidebar_components/Logo";
 import Navigation from "./sidebar_components/Navigation";
 
@@ -17,8 +18,10 @@ const Sidebar = ({ setClicked, setSidebar, isSidebar, userProfile }) => {
         <Logo setSidebar={setSidebar} />
         <Navigation userProfile={userProfile} />
       </div>
-
+     <div>
       <BottomBtn setClicked={setClicked} />
+      <CreateJob/>
+      </div>
     </div>
   );
 };
