@@ -19,8 +19,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #11113c;
-    padding: 0.5rem 0rem;
+    background-color: #0e0e0e;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    
 }
 .profile_menu ul{
     display: flex;
@@ -29,5 +31,7 @@
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    color : #ffffff;
+    color : #d6d6d6;
+    font-weight: 400;
+    font-size: 14px;
 }
