@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { CONTRACT_ADDRESS, NEXT_PUBLIC_GATEWAY_URL } from "../app/constants";
 import { useWriteContract } from "wagmi";
 import abi from "../app/contract/abi.json";
-import { Certificate } from "crypto";
 
 const CreatePost = ({ setClicked, userProfile }) => {
   const { data, error, isPending, writeContract: post } = useWriteContract();
