@@ -9,9 +9,9 @@ import { usePathname } from "next/navigation";
 import { useAccount, useReadContract } from "wagmi";
 import abi from "../app/contract/abi.json";
 
-const Featured = () => {
+const PostList = ({userProfile}) => {
   const [allPosts, setAllPosts] = useState();
-  // const pathname = usePathname().split("/");
+  const pathname = usePathname().split("/");
 
   const { data: Posts, error: isError } = useReadContract({
     abi,
@@ -22,8 +22,13 @@ const Featured = () => {
 
   useEffect(() => {
     if (Posts !== undefined) {
-      console.log("Posts:", Posts);
-      setAllPosts(Posts);
+        // if (pathname[1] == "followingfeeds") {
+        //     const posts = Posts.filter((item) => userProfile.following.includes(item.username));
+        //     setAllPosts(posts);
+        //     }
+        // else {
+            setAllPosts(Posts);
+        // }
     }
   }, [Posts, isError]);
 
@@ -44,4 +49,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default PostList;

@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { Featured } from "@/components";
 import Link from "next/link";
 
-const ViewJobs = () => {
+const Treanding = () => {
   return (
     <>
       <div className="lg:w-[65%] md:w-[80%] w-[85%] flex flex-col align-middle my-3 h-full ">
@@ -21,10 +23,10 @@ const ViewJobs = () => {
             </Link>{" "}
           </div>{" "}
         </div>
-        jobs
+        <Featured />
       </div>
     </>
   );
 };
 
-export default ViewJobs;
+export default Treanding;
