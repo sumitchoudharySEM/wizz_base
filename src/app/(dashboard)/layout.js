@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./dashboard_layout.css";
 
-import { Sidebar, RightSidebar } from "@/components";
+import { Sidebar, RightSidebar,CreatePost } from "@/components";
 import Link from "next/link";
 
 import { useAccount, useReadContract } from "wagmi";
@@ -136,8 +136,7 @@ export default function UserInfoLayout({ children }) {
             </div>
             <div className="lg:w-[55%] md:w-[65%] w-full  h-full flex flex-col  items-center  align-middle bg-[#14161b]">
               {isClicked == 1 ? (
-                // <CreatePost setClicked={setClicked} userProfile={userProfile} />
-                <></>
+                <CreatePost setClicked={setClicked} userProfile={userProfile} />
               ) : null}
 
               {isSidebar ? (
