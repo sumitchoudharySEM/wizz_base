@@ -9,6 +9,20 @@ import Link from "next/link";
 const PostCard = (props) => {
   const [creater, setCreater] = useState();
 
+  var bgColour = "bg-[#404040]";
+
+  if (props.item.category == "Genral Post") {
+    bgColour = "bg-[#404040]";
+  } else if (props.item.category == "Work Experience") {
+    bgColour = "bg-[#00a189]";
+  } else if (props.item.category == "Achievement") {
+    bgColour = "bg-[#7100bc]";
+  } else if (props.item.category == "Project") {
+    bgColour = "bg-[#004ebb]";
+  } else if (props.item.category == "Certification") {
+    bgColour = "bg-[#009e3f]";
+  }
+
   const { data: owner, error: isError } = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
@@ -37,7 +51,7 @@ const PostCard = (props) => {
               </div>
               <div className="flex flex-col text-white justify-center">
                 <div className="text-xl font-medium">{creater.name}</div>
-                <div className="text-xs font-normal text-[#D9D9D9]">
+                <div className="text-xs font-normal text-[#cfcfcf]">
                   @{creater.username}
                 </div>
               </div>
@@ -48,7 +62,7 @@ const PostCard = (props) => {
         )}
 
         <div>
-          <button className="bg-[#FFFFFF] bg-opacity-5 py-2 px-4 w-full text-xs text-[#A4A4A4] border-none rounded-lg">
+          <button className={`py-2 px-4 w-full text-xs text-[#ededed] border-none rounded-lg ${bgColour} `}>
             {props.item.category}
           </button>
         </div>
