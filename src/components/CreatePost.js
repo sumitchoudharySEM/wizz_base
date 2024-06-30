@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { CONTRACT_ADDRESS, NEXT_PUBLIC_GATEWAY_URL } from "../app/constants";
+import { CONTRACT_ADDRESS, NEXT_PUBLIC_GATEWAY_URL, PINATA_JWT } from "../app/constants";
 import { useWriteContract } from "wagmi";
 import abi from "../app/contract/abi.json";
 
@@ -10,6 +10,7 @@ const CreatePost = ({ setClicked, userProfile }) => {
   const { data, error, isPending, writeContract: post } = useWriteContract();
 
   const [content, setContent] = useState("");
+  const [type, setType] = useState("Genral Post");
 
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -63,6 +64,24 @@ const CreatePost = ({ setClicked, userProfile }) => {
     }
   };
 
+  const createPostFun = async (cid) => {
+    post({
+      address: CONTRACT_ADDRESS,
+      abi,
+      functionName: "createPost",
+      args: [content, cid, true, type],
+    });
+  };
+
+  useEffect(() => {
+    console.log("createPostData:", data);
+    console.log("createPostError:", error);
+    if (data !== undefined) {
+      toast.success("Post created successfully");
+      setClicked(null);
+    }
+  }, [data, error]);
+
   return (
     <div className="w-[65%] flex flex-col align-middle my-3 h-full  ">
       <div className="fixed bottom-0 bg-black rounded-t-3xl w-[33%] p-6 z-40">
@@ -114,14 +133,7 @@ const CreatePost = ({ setClicked, userProfile }) => {
                     const cid = await handleSubmission();
                     console.log("CID:", cid);
 
-                    post({
-                      address: CONTRACT_ADDRESS,
-                      abi,
-                      functionName: "createPost",
-                      args: [content, cid, true, "certificatation"],
-                    });
-                    // toast.success("Post created successfully");
-                    // setClicked(null);
+                    await createPostFun(cid);
                     // window.location.reload();
                   } catch (error) {
                     console.log(error);
@@ -133,6 +145,39 @@ const CreatePost = ({ setClicked, userProfile }) => {
                 Post
               </button>
             </div>
+          </div>
+          <div className="">
+            <select
+              onChange={(e) => setType(e.target.value)}
+              className="appearance-none block w-full bg-[#1f212d] text-white rounded-xl py-4 px-4 my-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option
+                className="text-[#c3c3c3] pt-4 pb-4"
+                disabled
+                selected
+                value="Genral Post"
+              >
+                Select Type of Opportunity
+              </option>
+              <option className="text-white pt-10 pb-10" value="Genral Post">
+                Genral Post
+              </option>
+              <option
+                className="text-white pt-10 pb-10"
+                value="Work Experience"
+              >
+                Work Experience
+              </option>
+              <option className="text-white pt-10 pb-10" value="Achievement">
+                Achievement
+              </option>
+              <option className="text-white pt-10 pb-10" value="Project">
+                Project
+              </option>
+              <option className="text-white pt-10 pb-10" value="Certification">
+                Certification
+              </option>
+            </select>
           </div>
           <div>
             <textarea
@@ -172,7 +217,9 @@ const CreatePost = ({ setClicked, userProfile }) => {
                   </div>
                 </div>
               </label>
-              <button onClick={() => setClicked(2)}>
+              <button
+              // onClick={() => setClicked(2)}
+              >
                 <div className="flex space-x-2 text-white mr-3 align-middle ">
                   <div className="flex align-middle justify-center flex-col ">
                     <svg
