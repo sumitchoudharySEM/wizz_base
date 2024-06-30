@@ -32,9 +32,9 @@ const Navigation = ({userProfile}) => {
     
     else if (cutpathname[1] == "opportunities") {
       setActiveBtn(7);
-    } else if (cutpathname[1] == "myapplications") {
+    } else if (cutpathname[2] == "applications") {
       setActiveBtn(8);
-    } else if (cutpathname[1] == "myopportunities") {
+    } else if (cutpathname[2] == "opportunities") {
       setActiveBtn(9);
     }
   }, [pathname]);
@@ -211,7 +211,7 @@ const Navigation = ({userProfile}) => {
           </div>
         </div>
       </Link>{" "}
-      <Link href="/myopportunities">
+      <Link href={`/${userProfile.username}/opportunities`}>
         <div className={`${activeBtn == 9 ? activ : inactiv} `}>
           <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">
@@ -233,7 +233,7 @@ const Navigation = ({userProfile}) => {
           </div>
         </div>
       </Link>{" "}
-      <Link href="/myapplications">
+      <Link href={`/${userProfile.username}/applications`}>
         <div className={`${activeBtn == 8 ? activ : inactiv} `}>
           <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">

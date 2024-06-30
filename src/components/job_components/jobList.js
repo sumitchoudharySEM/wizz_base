@@ -23,18 +23,18 @@ const JobList = () => {
     if (data !== undefined) {
       if(pathname[1] == "opportunities") {
         if(pathname[2] == "job") {
-          setAllJobs(data.filter((item) => item.jobType == "Job"));
+          setAllJobs(data.filter((item) => item.jobType == "Job").reverse());
         } else if(pathname[2] == "internship") {
-          setAllJobs(data.filter((item) => item.jobType == "Internship"));
+          setAllJobs(data.filter((item) => item.jobType == "Internship").reverse());
         } else if(pathname[2] == "freelancing") {
-          setAllJobs(data.filter((item) => item.jobType == "Freelancing"));
+          setAllJobs(data.filter((item) => item.jobType == "Freelancing").reverse());
         } else if(pathname[2] == "bounty") {
-          setAllJobs(data.filter((item) => item.jobType == "Bounty"));
+          setAllJobs(data.filter((item) => item.jobType == "Bounty").reverse());
         } else {
-          setAllJobs(data);
+          setAllJobs(data.reverse());
         }
       } else {
-        setAllJobs(data);
+        setAllJobs(data.reverse());
       }
     }
   }, [data, error]);
