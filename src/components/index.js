@@ -7,5 +7,6 @@ import Connection from "./connection";
 import PostCard from "./postCard";
 import PostList from "./postList";
 import JobList from "./job_components/jobList";
+import ApplicantProfile from "./job_components/applicantProfile";
 
-export { Sidebar, RightSidebar, CreatePost, Featured, Topbar, Connection, PostCard, PostList, JobList };
+export { Sidebar, RightSidebar, CreatePost, Featured, Topbar, Connection, PostCard, PostList, JobList, ApplicantProfile };
