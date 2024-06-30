@@ -102,11 +102,12 @@ const JobView = () => {
           )}
           <div className="text-white  flex flex-col ">
             <div>
+            {detailedDescription && detailedDescription.bannerURL ?
               <img
                 className="w-full h-36 rounded-xl"
-                src="https://images.unsplash.com/photo-1614853316476-de00d14cb1fc?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA4fHxiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
+                src={detailedDescription.bannerURL}
                 alt=""
-              />
+              /> : <></> }
             </div>
             <div className="mt-5">
               <div className="flex flex-row text-white justify-between">

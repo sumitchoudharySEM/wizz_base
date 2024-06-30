@@ -8,6 +8,37 @@ import abi from "../../app/contract/abi.json";
 import Link from "next/link";
 
 const JobCard = (props) => {
+  const [detailedDescription, setDetailedDescription] = useState();
+  const [url, setUrl] = useState();
+
+  useEffect(() => {
+    if (props.item !== undefined) {
+      setUrl(`${NEXT_PUBLIC_GATEWAY_URL}/ipfs/${props.item.descriptionIPFS}`);
+    }
+  }, [props.item]);
+
+  async function fetchDataFromUrl(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    if (url !== undefined) {
+      fetchDataFromUrl(url).then((data) => {
+        setDetailedDescription(data);
+        console.log("Detailed discription:", data);
+      });
+    }
+  }, [url]);
 
   return (
     <>
@@ -15,11 +46,13 @@ const JobCard = (props) => {
         {/* Banner Image */}
         {/* {job.bannerImage && ( */}
         <div className=" h-32 mb-4 rounded-t-xl overflow-hidden">
+        {detailedDescription && detailedDescription.bannerURL ?
           <img
-            src="https://amber-foolish-chickadee-951.mypinata.cloud/ipfs/QmeUbeSjG85u2n3xyjSfN2rjHaabFoJb2nGm2FzAaBZr8V"
+            src={detailedDescription.bannerURL}
             alt="Job Banner"
             className="w-full h-full object-cover object-center"
           />
+          : <></> }
         </div>
         {/* )} */}
 
