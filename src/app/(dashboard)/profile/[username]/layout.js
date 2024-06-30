@@ -55,16 +55,19 @@ export default function ProfileLayout({ children }) {
         <div className="profile_menu mt-5 mb-5">
           <ul>
             <Link href={`/profile/${username}`}>
-              <li>All Posts</li>
+              <li>All</li>
             </Link>
-            <Link href={`/profile/${username}/work`}>
-              <li>Work</li>
+            <Link href={`/profile/${username}/workexperience`}>
+              <li>Work Exp.</li>
             </Link>
-            <Link href={`/profile/${username}/certificates`}>
-              <li>Certificates</li>
+            <Link href={`/profile/${username}/achievement`}>
+              <li>Achievement</li>
             </Link>
-            <Link href={`/profile/${username}/achievements`}>
-              <li>Achivements</li>
+            <Link href={`/profile/${username}/project`}>
+              <li>Project</li>
+            </Link>
+            <Link href={`/profile/${username}/certification`}>
+              <li>Certification</li>
             </Link>
           </ul>
         </div>

@@ -8,6 +8,7 @@ import abi from "../../../../../app/contract/abi.json";
 import Link from "next/link";
 
 const ProfileWork = () => {
+  const { username } = useParams();
   const [allPosts, setAllPosts] = useState();
 
   const { data: Posts, error: isError } = useReadContract({
@@ -20,7 +21,9 @@ const ProfileWork = () => {
   useEffect(() => {
     if (Posts !== undefined) {
       console.log("Posts:", Posts);
-      setAllPosts(Posts);
+      setAllPosts(
+        Posts.filter((item) => item.category == "Work Experience" && item.creatorUsername == username)
+      );
     }
   }, [Posts, isError]);
 
@@ -34,7 +37,7 @@ const ProfileWork = () => {
             </div>
           ))
         ) : (
-          <></>
+          <div className="text-white w-full mt-6 text-center font-semibold">No Work Experience Post Yet</div>
         )}
       </div>
   );
