@@ -1,9 +1,10 @@
 "use client";
-import {BlueCreateWalletButton} from './smartWalletButton';
+// import {BlueCreateWalletButton} from './smartWalletButton';
 import { useAccount, useWriteContract, useReadContract} from 'wagmi'
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 import {
   CONTRACT_ADDRESS,
@@ -61,7 +62,7 @@ export default function Home() {
       address: CONTRACT_ADDRESS,
       abi,
       functionName: "createUser",
-      args: [newUser.username, newUser.fullname, newUser.bio, "cid", "bannercid"],
+      args: [newUser.username, newUser.fullname, newUser.bio, cid, "null"],
     });
 
     console.log("createUser function called 2");
@@ -139,7 +140,8 @@ export default function Home() {
             <div>
               <div className="w-48">
                 <div className="space-y-6  py-4 bottom-0 flex flex-col ">
-                <BlueCreateWalletButton />
+                {/* <BlueCreateWalletButton /> */}
+                <ConnectButton />
                 </div>
               </div>
             </div>
@@ -180,9 +182,8 @@ export default function Home() {
                   <button
                     onClick={async () => {
                       try {
-                        // const cid = await handleSubmission();
-                        // console.log("CID", cid);
-                        const cid = "Qmd9CmshVBVbkz8xJQkc9P3q6ddfvcc8kJWhCoBjp3DhGJ"
+                        const cid = await handleSubmission();
+                        console.log("CID", cid);
                         await createUser( cid );
                       } catch (error) {
                         console.error("Error during submission:", error);

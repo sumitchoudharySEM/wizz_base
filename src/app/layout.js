@@ -1,6 +1,9 @@
 "use client";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.css"
+
+import { RainbowProvider } from "@/context/RainbowKitContext";
+// import { ContractFuncProvider } from "@/context/ContractFuncWegmiContext";;
 
 import { WagmiProvider } from "wagmi";
 import { config } from "./wagmiconfig";
@@ -13,11 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient}>
+      <RainbowProvider>
+        {/* <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}> */}
             {children}
-          </QueryClientProvider>
-        </WagmiProvider>
+          {/* </QueryClientProvider>
+        </WagmiProvider> */}
+      </RainbowProvider>
       </body>
     </html>
   );
