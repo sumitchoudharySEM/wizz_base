@@ -22,7 +22,7 @@ const ProfileWork = () => {
     if (Posts !== undefined) {
       console.log("Posts:", Posts);
       setAllPosts(
-        Posts.filter((item) => item.category == "Work Experience" && item.creatorUsername == username)
+        Posts.filter((item) => item.category == "Work Experience" && item.creatorUsername == username).reverse()
       );
     }
   }, [Posts, isError]);

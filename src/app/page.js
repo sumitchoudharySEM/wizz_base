@@ -1,21 +1,17 @@
 "use client";
 // import {BlueCreateWalletButton} from './smartWalletButton';
-import { useAccount, useWriteContract, useReadContract} from 'wagmi'
+import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import {
-  CONTRACT_ADDRESS,
-  PINATA_JWT,
-} from "./constants";
-import abi  from "./contract/abi.json";
+import { CONTRACT_ADDRESS, PINATA_JWT } from "./constants";
+import abi from "./contract/abi.json";
 
 export default function Home() {
-
-  const { address } = useAccount()
-  const [isAccount , setIsAccount] = useState()
+  const { address } = useAccount();
+  const [isAccount, setIsAccount] = useState();
 
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -44,7 +40,7 @@ export default function Home() {
         setIsAccount(false);
         console.log("Account does not exist");
       }
-    } 
+    }
   }, [isAccountData, isAccountError, address]);
 
   const {
@@ -58,17 +54,15 @@ export default function Home() {
     try {
       console.log("createUser function called");
 
-    createUserWriteContract({
-      address: CONTRACT_ADDRESS,
-      abi,
-      functionName: "createUser",
-      args: [newUser.username, newUser.fullname, newUser.bio, cid, "null"],
-    });
+      createUserWriteContract({
+        address: CONTRACT_ADDRESS,
+        abi,
+        functionName: "createUser",
+        args: [newUser.username, newUser.fullname, newUser.bio, cid, "null"],
+      });
 
-    console.log("createUser function called 2");
-
-    }
-    catch (error) {
+      console.log("createUser function called 2");
+    } catch (error) {
       console.error("Error during submission:", error);
     }
   };
@@ -76,13 +70,13 @@ export default function Home() {
   useEffect(() => {
     console.log("createUserData:", createUserData);
     console.log("createUserError:", createUserError);
-    console.log("createUserIsPending:", createUserIsPending);
     if (createUserData !== undefined) {
       toast.success("User created successfully");
       location.reload();
-      console.log("createUserData:", createUserData);
-    } 
-  }, [createUserData, createUserError, createUserIsPending]);
+    } else if (createUserError !== undefined) {
+      toast.error("Error creating user");
+    }
+  }, [createUserData, createUserError]);
 
   function changeHandler(e) {
     setPreview(URL.createObjectURL(e.target.files[0]));
@@ -116,17 +110,19 @@ export default function Home() {
       );
       const resData = await res.json();
       console.log("image response", resData.IpfsHash);
-      return resData.IpfsHash; 
+      return resData.IpfsHash;
     } catch (error) {
       console.log(error);
-      throw error; 
+      throw error;
     }
   };
 
   return (
     <>
       <div className="flex jus justify-center h-[100vh] width-[100vw] align-middle  lg:hidden">
-        <h1 className=" m-auto p-6 text-center">Currently, Wizz UI works only with large screen devices.</h1>
+        <h1 className=" m-auto p-6 text-center">
+          Currently, Wizz UI works only with large screen devices.
+        </h1>
       </div>
       <div className="hidden  h-[80%] sm:hidden md:hidden lg:flex">
         <div className="w-full h-[100vh] flex-[0.7]  flex flex-col justify-center  align-middle p-32">
@@ -140,8 +136,8 @@ export default function Home() {
             <div>
               <div className="w-48">
                 <div className="space-y-6  py-4 bottom-0 flex flex-col ">
-                {/* <BlueCreateWalletButton /> */}
-                <ConnectButton />
+                  {/* <BlueCreateWalletButton /> */}
+                  <ConnectButton />
                 </div>
               </div>
             </div>
@@ -151,12 +147,16 @@ export default function Home() {
               <div className="flex md:flex-row flex-col">
                 <input
                   type="text"
-                  onChange={(e) => setNewUser({ ...newUser, fullname: e.target.value })}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, fullname: e.target.value })
+                  }
                   className="appearance-none block w-full bg-[#34374D]  text-white rounded-xl py-4 px-4 m-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Display Name"
                 />
                 <input
-                  onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, username: e.target.value })
+                  }
                   type="text"
                   className="appearance-none block w-full bg-[#34374D]  text-white rounded-xl py-4 px-4 m-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Username"
@@ -164,7 +164,9 @@ export default function Home() {
               </div>
               <div className="flex">
                 <input
-                  onChange={(e) => setNewUser({ ...newUser, bio: e.target.value })}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, bio: e.target.value })
+                  }
                   className="appearance-none block w-full bg-[#34374D]  text-white rounded-xl py-4 px-4 m-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Write a crazy bio"
                 />
@@ -184,7 +186,7 @@ export default function Home() {
                       try {
                         const cid = await handleSubmission();
                         console.log("CID", cid);
-                        await createUser( cid );
+                        await createUser(cid);
                       } catch (error) {
                         console.error("Error during submission:", error);
                       }

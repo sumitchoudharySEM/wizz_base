@@ -38,7 +38,7 @@ const PostList = ({userProfile}) => {
                 setAllPosts(Posts.filter((item) => item.category == "certificatation" && item.creatorUsername == userProfile.username));
             } else {
                 console.log("condition 3 run")
-                setAllPosts(Posts.filter((item) => item.creatorUsername == userProfile.username));
+                setAllPosts(Posts.filter((item) => item.creatorUsername == userProfile.username).reverse());
             }
         }
         else {
@@ -58,7 +58,8 @@ const PostList = ({userProfile}) => {
             </div>
           ))
         ) : (
-          <></>
+
+          <div className="text-white w-full mt-6 text-center font-semibold">No Post Yet</div>
         )}
       </div>
     </>

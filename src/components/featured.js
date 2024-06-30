@@ -23,7 +23,7 @@ const Featured = () => {
   useEffect(() => {
     if (Posts !== undefined) {
       console.log("Posts:", Posts);
-      setAllPosts(Posts);
+      setAllPosts(Posts.reverse());
     }
   }, [Posts, isError]);
 
