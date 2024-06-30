@@ -61,8 +61,10 @@ export default function Home() {
       address: CONTRACT_ADDRESS,
       abi,
       functionName: "createUser",
-      args: [newUser.username, newUser.fullname, newUser.bio, cid, newUser.bannercid],
+      args: [newUser.username, newUser.fullname, newUser.bio, "cid", "bannercid"],
     });
+
+    console.log("createUser function called 2");
 
     }
     catch (error) {
@@ -178,9 +180,9 @@ export default function Home() {
                   <button
                     onClick={async () => {
                       try {
-                        const cid = await handleSubmission();
-                        console.log("CID", cid);
-
+                        // const cid = await handleSubmission();
+                        // console.log("CID", cid);
+                        const cid = "Qmd9CmshVBVbkz8xJQkc9P3q6ddfvcc8kJWhCoBjp3DhGJ"
                         await createUser( cid );
                       } catch (error) {
                         console.error("Error during submission:", error);

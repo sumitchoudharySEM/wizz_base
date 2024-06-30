@@ -36,57 +36,6 @@
 		"type": "event"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_jobId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_applicationIPFS",
-				"type": "string"
-			}
-		],
-		"name": "applyForJob",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_title",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_shortDescription",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_descriptionIPFS",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_reward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_jobType",
-				"type": "string"
-			}
-		],
-		"name": "createJob",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -118,52 +67,16 @@
 		"type": "event"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "Owner",
+		"outputs": [
 			{
 				"internalType": "address",
-				"name": "_profileContractAddress",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "setProfileContractAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_applicationId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_status",
-				"type": "string"
-			}
-		],
-		"name": "updateApplicationStatus",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_jobId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_status",
-				"type": "string"
-			}
-		],
-		"name": "updateJobStatus",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -250,6 +163,57 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_jobId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_applicationIPFS",
+				"type": "string"
+			}
+		],
+		"name": "applyForJob",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_shortDescription",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_descriptionIPFS",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_reward",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_jobType",
+				"type": "string"
+			}
+		],
+		"name": "createJob",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -539,19 +503,6 @@
 	},
 	{
 		"inputs": [],
-		"name": "Owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "profileContract",
 		"outputs": [
 			{
@@ -561,6 +512,55 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_profileContractAddress",
+				"type": "address"
+			}
+		],
+		"name": "setProfileContractAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_applicationId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_status",
+				"type": "string"
+			}
+		],
+		"name": "updateApplicationStatus",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_jobId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_status",
+				"type": "string"
+			}
+		],
+		"name": "updateJobStatus",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
