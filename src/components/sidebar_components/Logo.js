@@ -2,7 +2,7 @@ import React from 'react'
 
 const Logo = ({setSidebar}) => {
   return (
-    <div className="pb-20 px-4  ">
+    <div className="pb-14 px-4  ">
       <div className=' absolute right-3 top-5 md:hidden'>
         <button onClick={()=>setSidebar(false)}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

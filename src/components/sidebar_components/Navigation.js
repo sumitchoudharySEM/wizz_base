@@ -28,6 +28,14 @@ const Navigation = ({userProfile}) => {
       setActiveBtn(5);
     } else if (cutpathname[1] == "profile") {
       setActiveBtn(6);
+    } 
+    
+    else if (cutpathname[1] == "opportunities") {
+      setActiveBtn(7);
+    } else if (cutpathname[1] == "myapplications") {
+      setActiveBtn(8);
+    } else if (cutpathname[1] == "myopportunities") {
+      setActiveBtn(9);
     }
   }, [pathname]);
 
@@ -39,7 +47,7 @@ const Navigation = ({userProfile}) => {
     <div className="flex flex-col space-y-2 ">
       <Link href="/feeds">
         <div className={`${activeBtn == 1 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3  font-medium ">
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base  ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -57,13 +65,13 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">Feeds</div>
+            <div className=" font-medium text-base">Feeds</div>
           </div>
         </div>
       </Link>
       {/* <Link href="/followers">
         <div className={`${activeBtn == 2 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3  font-medium ">
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -79,13 +87,13 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">Followes</div>
+            <div className=" font-medium text-base">Followes</div>
           </div>
         </div>
       </Link>{" "} */}
       <Link href="/following">
         <div className={`${activeBtn == 3 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3  font-medium ">
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -101,13 +109,13 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">Following</div>
+            <div className=" font-medium text-base">Following</div>
           </div>
         </div>
       </Link>{" "}
       <Link href="/allprofiles">
         <div className={`${activeBtn == 4 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3  font-medium ">
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -175,13 +183,81 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">Discover Users</div>
+            <div className=" font-medium text-base">Discover Users</div>
+          </div>
+        </div>
+      </Link>{" "}
+      
+      {/* /////////////////////////////////////////////////////////////////////////////// */}
+      <Link href="/opportunities">
+        <div className={`${activeBtn == 7 ? activ : inactiv} `}>
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
+            <div className="flex flex-col justify-center">
+              {" "}
+              <svg
+                width="22"
+                height="17"
+                viewBox="0 0 18 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 7.3125C10.2225 7.3125 11.3025 7.735 12.18 8.2875C12.99 8.8075 13.5 9.9775 13.5 11.245V13H4.5V11.2558C4.5 9.9775 5.01 8.8075 5.82 8.29833C6.6975 7.735 7.7775 7.3125 9 7.3125ZM3 7.58333C3.825 7.58333 4.5 6.60833 4.5 5.41667C4.5 4.225 3.825 3.25 3 3.25C2.175 3.25 1.5 4.225 1.5 5.41667C1.5 6.60833 2.175 7.58333 3 7.58333ZM3.8475 8.775C3.57 8.71 3.2925 8.66667 3 8.66667C2.2575 8.66667 1.5525 8.89417 0.915001 9.295C0.643284 9.46276 0.411693 9.74217 0.249014 10.0985C0.0863345 10.4548 -0.000257765 10.8723 5.7637e-07 11.2992V13H3.375V11.2558C3.375 10.3567 3.5475 9.51167 3.8475 8.775ZM15 7.58333C15.825 7.58333 16.5 6.60833 16.5 5.41667C16.5 4.225 15.825 3.25 15 3.25C14.175 3.25 13.5 4.225 13.5 5.41667C13.5 6.60833 14.175 7.58333 15 7.58333ZM18 11.2992C18 10.4217 17.64 9.64167 17.085 9.295C16.4273 8.8805 15.7175 8.66659 15 8.66667C14.7075 8.66667 14.43 8.71 14.1525 8.775C14.4525 9.51167 14.625 10.3567 14.625 11.2558V13H18V11.2992ZM9 0C10.245 0 11.25 1.45167 11.25 3.25C11.25 5.04833 10.245 6.5 9 6.5C7.755 6.5 6.75 5.04833 6.75 3.25C6.75 1.45167 7.755 0 9 0Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <div className=" font-medium text-base">Opportunities</div>
+          </div>
+        </div>
+      </Link>{" "}
+      <Link href="/myopportunities">
+        <div className={`${activeBtn == 9 ? activ : inactiv} `}>
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
+            <div className="flex flex-col justify-center">
+              {" "}
+              <svg
+                width="22"
+                height="17"
+                viewBox="0 0 18 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 7.3125C10.2225 7.3125 11.3025 7.735 12.18 8.2875C12.99 8.8075 13.5 9.9775 13.5 11.245V13H4.5V11.2558C4.5 9.9775 5.01 8.8075 5.82 8.29833C6.6975 7.735 7.7775 7.3125 9 7.3125ZM3 7.58333C3.825 7.58333 4.5 6.60833 4.5 5.41667C4.5 4.225 3.825 3.25 3 3.25C2.175 3.25 1.5 4.225 1.5 5.41667C1.5 6.60833 2.175 7.58333 3 7.58333ZM3.8475 8.775C3.57 8.71 3.2925 8.66667 3 8.66667C2.2575 8.66667 1.5525 8.89417 0.915001 9.295C0.643284 9.46276 0.411693 9.74217 0.249014 10.0985C0.0863345 10.4548 -0.000257765 10.8723 5.7637e-07 11.2992V13H3.375V11.2558C3.375 10.3567 3.5475 9.51167 3.8475 8.775ZM15 7.58333C15.825 7.58333 16.5 6.60833 16.5 5.41667C16.5 4.225 15.825 3.25 15 3.25C14.175 3.25 13.5 4.225 13.5 5.41667C13.5 6.60833 14.175 7.58333 15 7.58333ZM18 11.2992C18 10.4217 17.64 9.64167 17.085 9.295C16.4273 8.8805 15.7175 8.66659 15 8.66667C14.7075 8.66667 14.43 8.71 14.1525 8.775C14.4525 9.51167 14.625 10.3567 14.625 11.2558V13H18V11.2992ZM9 0C10.245 0 11.25 1.45167 11.25 3.25C11.25 5.04833 10.245 6.5 9 6.5C7.755 6.5 6.75 5.04833 6.75 3.25C6.75 1.45167 7.755 0 9 0Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <div className=" font-medium text-base">My Opportunities</div>
+          </div>
+        </div>
+      </Link>{" "}
+      <Link href="/myapplications">
+        <div className={`${activeBtn == 8 ? activ : inactiv} `}>
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
+            <div className="flex flex-col justify-center">
+              {" "}
+              <svg
+                width="22"
+                height="17"
+                viewBox="0 0 18 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 7.3125C10.2225 7.3125 11.3025 7.735 12.18 8.2875C12.99 8.8075 13.5 9.9775 13.5 11.245V13H4.5V11.2558C4.5 9.9775 5.01 8.8075 5.82 8.29833C6.6975 7.735 7.7775 7.3125 9 7.3125ZM3 7.58333C3.825 7.58333 4.5 6.60833 4.5 5.41667C4.5 4.225 3.825 3.25 3 3.25C2.175 3.25 1.5 4.225 1.5 5.41667C1.5 6.60833 2.175 7.58333 3 7.58333ZM3.8475 8.775C3.57 8.71 3.2925 8.66667 3 8.66667C2.2575 8.66667 1.5525 8.89417 0.915001 9.295C0.643284 9.46276 0.411693 9.74217 0.249014 10.0985C0.0863345 10.4548 -0.000257765 10.8723 5.7637e-07 11.2992V13H3.375V11.2558C3.375 10.3567 3.5475 9.51167 3.8475 8.775ZM15 7.58333C15.825 7.58333 16.5 6.60833 16.5 5.41667C16.5 4.225 15.825 3.25 15 3.25C14.175 3.25 13.5 4.225 13.5 5.41667C13.5 6.60833 14.175 7.58333 15 7.58333ZM18 11.2992C18 10.4217 17.64 9.64167 17.085 9.295C16.4273 8.8805 15.7175 8.66659 15 8.66667C14.7075 8.66667 14.43 8.71 14.1525 8.775C14.4525 9.51167 14.625 10.3567 14.625 11.2558V13H18V11.2992ZM9 0C10.245 0 11.25 1.45167 11.25 3.25C11.25 5.04833 10.245 6.5 9 6.5C7.755 6.5 6.75 5.04833 6.75 3.25C6.75 1.45167 7.755 0 9 0Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <div className=" font-medium text-base">My Applications</div>
           </div>
         </div>
       </Link>{" "}
       <Link href={`/profile/${userProfile.username}`}>
         <div className={`${activeBtn == 5 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3  font-medium ">
+          <div className="flex space-x-3 p-2 px-3  font-medium text-base ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -199,13 +275,13 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">My Profile</div>
+            <div className=" font-medium text-base">My Profile</div>
           </div>
         </div>
       </Link>
       <Link href={`/profile/${userProfile.username}`}>
         <div className={`${activeBtn == 6 ? activ : inactiv} `}>
-          <div className="flex space-x-3 p-2 px-3 lg:hidden  font-medium ">
+          <div className="flex space-x-3 p-2 px-3 lg:hidden  font-medium text-base ">
             <div className="flex flex-col justify-center">
               {" "}
               <svg
@@ -223,7 +299,7 @@ const Navigation = ({userProfile}) => {
                 />
               </svg>
             </div>
-            <div className=" font-medium">My Profile</div>
+            <div className=" font-medium text-base">My Profile</div>
           </div>
         </div>
       </Link>

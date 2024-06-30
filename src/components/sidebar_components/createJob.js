@@ -8,7 +8,7 @@ const CreateJob = () => {
         Post Work
         </button> */}
       <Link href="/jobs/create">
-        <button className="bg-[#ffffffdd] py-2  w-[89%] text-lg  font-medium text-[#7501E9] border-none  rounded-xl">
+        <button className="bg-[#ffffffdd] py-2  w-[89%] text-md  font-medium text-[#7501E9] border-none  rounded-xl">
           Post Work
         </button>
       </Link>
