@@ -1,11 +1,12 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef, useMemo} from "react";
 import { useAccount, useWriteContract, useReadContract} from 'wagmi'
 import {
   JOBS_CONTRACT_ADDRESS,
   PINATA_JWT,
 } from "../../../constants";
 import abi  from "../../../contract/jobsabi.json";
+import JoditEditor from 'jodit-react';
 
 const CreateJob = () => {
 
@@ -17,7 +18,28 @@ const CreateJob = () => {
     type: "",
     reward: "",
     detailedDiscription: "",
+    bannerURL: "",
   });
+  const editor = useRef(null);
+	const [content, setContent] = useState('');
+
+  // const editor = Jodit.make();
+
+  const placeholder = "Detailed Description: Provide a detailed job description, perks and rewards, requirements, deadlines, and more.";
+
+  const config = useMemo(() => ({
+    readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+    placeholder: placeholder || 'Start typing...',
+    width: '100%',
+    height: 300,
+    theme: "dark",
+    className: 'some_my_class',
+    style: {
+      backgroundColor: "#34374d", 
+      color: "white",
+      maxWidth: "100%",
+    }
+}), [placeholder]);
 
   const { data: createJobData, error: createJobError, isPending: createJobIsPending, writeContract: createJobWriteContract } = useWriteContract();
 
@@ -30,6 +52,7 @@ const CreateJob = () => {
     try {
     const detailedDescriptionData = {
       detailedDescription: job.detailedDiscription,
+      bannerURL: job.bannerURL,
     };
 
     const detailedDescriptionJSON = JSON.stringify(detailedDescriptionData);
@@ -74,6 +97,10 @@ const CreateJob = () => {
       // throw error; 
     }
   };
+
+  // useEffect(() => {
+  //   console.log("content:", content);
+  // }, [content]);
 
   return (
     <div className=" ">
@@ -131,12 +158,31 @@ const CreateJob = () => {
       </div>
 
       <div className="flex md:flex-row flex-col">
-        <textarea
+        <input
+          onChange = {(e) => setJob({...job, bannerURL: e.target.value})}
+          type="text"
+          className="appearance-none block w-full bg-[#34374D] text-white rounded-xl py-4 px-4 m-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Banner Image URL"
+        />
+      </div>
+
+      <div className="flex  max-w-fit justify-center align-middle overflow-hidden max-w-full pl-3 mt-3">
+        {/* <textarea
           onChange = {(e) => setJob({...job, detailedDiscription: e.target.value})}
           className="appearance-none block w-full bg-[#34374D] text-white rounded-xl py-4 px-4 m-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
           rows="6"
           placeholder="Detailed Description: Provide a detailed job description, perks and rewards, requirements, deadlines, and more."
-        ></textarea>
+        ></textarea> */}
+        <JoditEditor
+        className="jodit_theme_summer"
+        id="editor"
+			ref={editor}
+			value={job.detailedDiscription}
+			config={config}
+			tabIndex={1} // tabIndex of textarea
+			// onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+			onChange={newContent => setJob({...job, detailedDiscription: newContent})}
+		/>
       </div>
 
       {/* <div className="flex md:flex-row flex-col">

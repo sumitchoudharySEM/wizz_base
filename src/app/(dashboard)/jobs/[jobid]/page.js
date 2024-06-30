@@ -137,7 +137,10 @@ const JobView = () => {
               </button>
               <hr className="mt-3 mb-3 opacity-30 " />
               {detailedDescription && detailedDescription.detailedDescription ? 
-                <div className="text-[#e9e9e9] text-md">{detailedDescription.detailedDescription}</div> : <></>
+               <div
+               className="text-[#e9e9e9] text-md"
+               dangerouslySetInnerHTML={{ __html: detailedDescription.detailedDescription }}
+             ></div>: <></>
               }
             </div>
           </div>
