@@ -4,6 +4,8 @@ import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { JOBS_CONTRACT_ADDRESS, PINATA_JWT } from "../../../constants";
 import abi from "../../../contract/jobsabi.json";
 import JoditEditor from "jodit-react";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const CreateJob = () => {
   const { address } = useAccount();
@@ -49,8 +51,13 @@ const CreateJob = () => {
   } = useWriteContract();
 
   useEffect(() => {
-    console.log("createJobData:", createJobData);
-    console.log("createJobError:", createJobError);
+    if ( createJobData !== undefined) {
+      toast.success("Job Created successfully");
+      redirect('/opportunities');
+
+    } else if (createJobError !== null) {
+      toast.error("Error while creating job");
+    }
   }, [createJobData, createJobError]);
 
   const handleSubmission = async () => {
@@ -58,6 +65,7 @@ const CreateJob = () => {
       const detailedDescriptionData = {
         detailedDescription: job.detailedDiscription,
         bannerURL: job.bannerURL,
+        jobStatus: "active",
       };
 
       const detailedDescriptionJSON = JSON.stringify(detailedDescriptionData);
@@ -93,22 +101,35 @@ const CreateJob = () => {
         }
       );
 
-      // Parse the response
       const resData = await res.json();
       console.log("Detailed description IPFS CID:", resData.IpfsHash);
 
-      // Return the IPFS CID
       return resData.IpfsHash;
     } catch (error) {
       console.log(error);
       return null;
-      // throw error;
     }
   };
 
-  // useEffect(() => {
-  //   console.log("content:", content);
-  // }, [content]);
+
+  const createJobFunc = async (disCID) => {
+    try {
+      createJobWriteContract({
+        abi,
+        address: JOBS_CONTRACT_ADDRESS,
+        functionName: "createJob",
+        args: [
+          job.title,
+          job.description,
+          disCID,
+          job.reward,
+          job.type,
+        ],
+      });
+    } catch (error) {
+      console.error("Error during create job:", error);
+    }
+  };
 
   return (
     <div className=" ">
@@ -227,18 +248,7 @@ const CreateJob = () => {
                     let disCID = await handleSubmission();
                     console.log("Job:", job);
 
-                    createJobWriteContract({
-                      abi,
-                      address: JOBS_CONTRACT_ADDRESS,
-                      functionName: "createJob",
-                      args: [
-                        job.title,
-                        job.description,
-                        disCID,
-                        job.reward,
-                        job.type,
-                      ],
-                    });
+                    createJobFunc(disCID);
                   } catch (error) {
                     console.error("Error during submission:", error);
                   }

@@ -73,7 +73,7 @@ export default function Home() {
     if (createUserData !== undefined) {
       toast.success("User created successfully");
       location.reload();
-    } else if (createUserError !== undefined) {
+    } else if (createUserError !== null) {
       toast.error("Error creating user");
     }
   }, [createUserData, createUserError]);

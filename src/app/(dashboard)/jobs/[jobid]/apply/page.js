@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { JOBS_CONTRACT_ADDRESS, PINATA_JWT } from "../../../../constants";
 import abi from "../../../../contract/jobsabi.json";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { toast } from "react-toastify";
 
 const page = () => {
@@ -28,6 +28,7 @@ const page = () => {
     console.log("createJobError:", applyError);
     if (data !== undefined) {
       toast.success("Application submitted successfully!");
+      redirect(`/jobs/${jobid}`);
     } else if (applyError !== null) {
       toast.error("Error submitting application!");
     }
@@ -53,6 +54,7 @@ const page = () => {
         whyWantToJoin: application.whyWantToJoin,
         coverLetterLink: application.coverLetterLink,
         anyQuestions: application.anyQuestions,
+        applicationStatus: "Pending",
       };
 
       const applicationDataJSON = JSON.stringify(applicationData);

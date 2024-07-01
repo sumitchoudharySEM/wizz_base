@@ -11,7 +11,7 @@ const Topbar = ({ profile }) => {
       <div>
         <img
           className="w-full h-36 rounded-xl"
-          src="https://images.unsplash.com/photo-1614853316476-de00d14cb1fc?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA4fHxiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_bVcPNq-HujfJEYAb6H1G1yHOK4rM0YJeZQ&s"
           alt=""
         />
       </div>
@@ -25,14 +25,21 @@ const Topbar = ({ profile }) => {
                 alt=""
               />
             </div>
-            <div className="flex flex-col  justify-end align-bottom">
-              {profile.owner == address ? (
-                <button className="py-1 px-10 flex-col align-bottom justify-end text-white border-while border-2  rounded-lg cursor-not-allowed">
-                  Edit
+            <div className="flex flex-row  justify-items-end justify-self-end  align-bottom ">
+              {/* {profile.owner == address ? ( */}|
+              <Link href={`/${profile.username}/opportunities`}>
+                <button className="py-2 px-5 flex-col align-bottom justify-end text-white border-while border-2  rounded-lg font-normal max-h-10 mt-16 text-sm mr-2">
+                  Job Posted
                 </button>
-              ) : (
+              </Link>
+              <Link href={`/${profile.username}/applications`}>
+                <button className="py-2 px-4 flex-col align-bottom justify-end text-white border-while border-2  rounded-lg font-normal max-h-10 mt-16 text-sm">
+                  Job Applied
+                </button>
+              </Link>
+              {/* ) : (
                 <></>
-              )}
+              )} */}
             </div>
           </div>
         </div>

@@ -57,7 +57,9 @@ const JobList = () => {
           </div>
         ))
       ) : (
-        <></>
+        <div className="text-white w-full mt-6 text-center font-semibold">
+          No Job Post Yet
+        </div>
       )}
     </div>
   );
