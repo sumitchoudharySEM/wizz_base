@@ -6,9 +6,13 @@ import React, { createContext } from "react";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
+import { WagmiProvider, http } from "wagmi";
 import { baseSepolia } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { coinbaseWallet } from 'wagmi/connectors';
+import { metaMask } from 'wagmi/connectors'
+import { walletConnect } from 'wagmi/connectors'
+import { injected } from 'wagmi/connectors'
 
 //rainbowkit config
 
@@ -16,6 +20,18 @@ const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "9b4a97010a2d03a05e71209f233ab457",
   chains: [baseSepolia],
+  connectors: [
+    
+    walletConnect({
+      projectId: '9b4a97010a2d03a05e71209f233ab457',
+    }),
+    metaMask(),
+    injected(),
+    coinbaseWallet({ appName: 'Create Wagmi' })
+  ],
+  transports: {
+    [baseSepolia.id]: http(),
+  },
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 

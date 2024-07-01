@@ -1,5 +1,5 @@
 "use client";
-// import {BlueCreateWalletButton} from './smartWalletButton';
+import {BlueCreateWalletButton} from './smartWalletButton';
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
@@ -136,7 +136,7 @@ export default function Home() {
             <div>
               <div className="w-48">
                 <div className="space-y-6  py-4 bottom-0 flex flex-col ">
-                  {/* <BlueCreateWalletButton /> */}
+                  <BlueCreateWalletButton />
                   <ConnectButton />
                 </div>
               </div>
