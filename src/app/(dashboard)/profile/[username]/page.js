@@ -7,7 +7,6 @@ import { useReadContract, useAccount } from "wagmi";
 import abi from "../../../../app/contract/abi.json";
 import Link from "next/link";
 import { PostList } from "@/components";
-import { useParams } from "next/navigation";
 
 
 const Profile = () => {
