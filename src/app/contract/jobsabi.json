@@ -152,11 +152,6 @@
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "status",
-				"type": "string"
-			},
-			{
 				"internalType": "uint256",
 				"name": "timestamp",
 				"type": "uint256"
@@ -283,11 +278,6 @@
 					},
 					{
 						"internalType": "string",
-						"name": "status",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
 						"name": "jobType",
 						"type": "string"
 					},
@@ -305,6 +295,113 @@
 				"internalType": "struct JobMarketplaceContract.Job[]",
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_applicationId",
+				"type": "uint256"
+			}
+		],
+		"name": "getApplicationByApplicationID",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "applicationId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "applicantUsername",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "applicationIPFS",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct JobMarketplaceContract.Application",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_jobId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			}
+		],
+		"name": "getApplicationByJobIDAndUsername",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "applicationId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "applicantUsername",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "applicationIPFS",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct JobMarketplaceContract.Application",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
@@ -378,11 +475,6 @@
 					},
 					{
 						"internalType": "string",
-						"name": "status",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
 						"name": "jobType",
 						"type": "string"
 					},
@@ -400,25 +492,6 @@
 				"internalType": "struct JobMarketplaceContract.Job",
 				"name": "",
 				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_employerUsername",
-				"type": "string"
-			}
-		],
-		"name": "getJobsByEmployer",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -484,11 +557,6 @@
 			},
 			{
 				"internalType": "string",
-				"name": "status",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
 				"name": "jobType",
 				"type": "string"
 			},
@@ -523,42 +591,6 @@
 			}
 		],
 		"name": "setProfileContractAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_applicationId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_status",
-				"type": "string"
-			}
-		],
-		"name": "updateApplicationStatus",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_jobId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_status",
-				"type": "string"
-			}
-		],
-		"name": "updateJobStatus",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
