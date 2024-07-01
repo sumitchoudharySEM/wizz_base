@@ -42,6 +42,14 @@ const JobList = () => {
         setAllJobs(
           data.filter((item) => item.employerUsername == username).reverse()
         );
+      } else if (pathname[2] == "applications") {
+        setAllJobs(
+          data.filter((item) => item.applicantsUsername.includes(username)).reverse()
+        );
+        console.log("test condition run")
+        console.log(username)
+        console.log(data)
+        console.log("allJobs:", data.filter((item) => item.applicantsUsername.includes(username)).reverse());
       } else {
         setAllJobs(data.reverse());
       }
