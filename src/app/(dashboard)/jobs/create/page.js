@@ -61,9 +61,9 @@ const CreateJob = () => {
   }, [createJobData, createJobError]);
 
   const handleSubmission = async () => {
-  if(detailedDescriptionData !==undefined && detailedDescriptionData !==null){
+  if(job.detailedDiscription !==undefined && job.detailedDiscription !==null){
     try {
-      const detailedDescriptionData = {
+       const detailedDescriptionData =  {
         detailedDescription: job.detailedDiscription,
         bannerURL: job.bannerURL,
         jobStatus: "active",

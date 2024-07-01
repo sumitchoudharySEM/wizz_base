@@ -139,7 +139,7 @@ export default function Home() {
               <div className="w-48">
                 <div className="space-y-6  py-4 bottom-0 flex flex-col ">
                   <BlueCreateWalletButton />
-                  {/* <ConnectButton /> */}
+                  <ConnectButton />
                 </div>
               </div>
             </div>

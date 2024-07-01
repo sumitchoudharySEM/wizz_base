@@ -7,11 +7,13 @@ import { useReadContract, useAccount } from "wagmi";
 import abi from "../../../../app/contract/abi.json";
 import Link from "next/link";
 import { PostList } from "@/components";
+import { useParams } from "next/navigation";
 
 
 const Profile = () => {
 
   const { address } = useAccount();
+  const { username } = useParams();
   const [userProfile, setUserProfile] = useState({
     owner: "",
     name: "",
@@ -26,8 +28,8 @@ const Profile = () => {
   const { data: profileResource, error: isError } = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
-    functionName: "getUserProfileByAddress",
-    args: [address],
+    functionName: "getUserProfileByUsername",
+    args: [username],
   });
 
   useEffect(() => {

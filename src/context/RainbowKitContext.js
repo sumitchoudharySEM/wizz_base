@@ -31,12 +31,6 @@ const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "9b4a97010a2d03a05e71209f233ab457",
   chains: [baseSepolia],
-  connectors: [
-    coinbaseWallet({ appName: 'Create Wagmi' })
-  ],
-  transports: {
-    [baseSepolia.id]: http(),
-  },
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
