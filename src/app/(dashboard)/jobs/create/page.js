@@ -3,9 +3,11 @@ import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { JOBS_CONTRACT_ADDRESS, PINATA_JWT } from "../../../constants";
 import abi from "../../../contract/jobsabi.json";
-import JoditEditor from "jodit-react";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const CreateJob = () => {
   const { address } = useAccount();
@@ -132,7 +134,7 @@ const CreateJob = () => {
       console.error("Error during create job:", error);
     }
   };
-
+  if (typeof window !== "undefined") {
   return (
     <div className=" ">
       <div className="w-full h-full flex-[0.7] flex flex-col justify-center align-middle mt-8 mb-6 ">
@@ -264,6 +266,7 @@ const CreateJob = () => {
       </div>
     </div>
   );
+}
 };
 
 export default CreateJob;
