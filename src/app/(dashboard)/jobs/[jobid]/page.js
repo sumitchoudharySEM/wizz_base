@@ -102,12 +102,15 @@ const JobView = () => {
           )}
           <div className="text-white  flex flex-col ">
             <div>
-            {detailedDescription && detailedDescription.bannerURL ?
-              <img
-                className="w-full h-36 rounded-xl"
-                src={detailedDescription.bannerURL}
-                alt=""
-              /> : <></> }
+              {detailedDescription && detailedDescription.bannerURL ? (
+                <img
+                  className="w-full h-36 rounded-xl"
+                  src={detailedDescription.bannerURL}
+                  alt=""
+                />
+              ) : (
+                <></>
+              )}
             </div>
             <div className="mt-5">
               <div className="flex flex-row text-white justify-between">
@@ -123,26 +126,47 @@ const JobView = () => {
                 </div>
               </div>
               <div className=" my-2">{job.shortDescription}</div>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 mb-5">
                 <div className="flex space-x-2 align-middle">
-                  <div className="text-md text-[#a6a6a6] ">
-                    {job.applicantsUsername ? job.applicantsUsername.length : 0}
-                  </div>
+                  <div className="text-md text-[#a6a6a6] ">Posted:</div>
                   <div className="flex flex-col  justify-center text-[#979797] text-opacity-90 text-md">
-                    Applicants
+                    3 days ago
                   </div>
                 </div>
               </div>
-              <button className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mt-3">
-                Apply Now
-              </button>
+              <div className="flex flex-row justify-between">
+                <Link
+                  className="w-[48%]"
+                  href={`/jobs/${jobid}/applicants`}
+                  passHref
+                >
+                  <button className=" border-[1px] mr-4 py-3 border-white px-4  max-h-fit text-sm text-white  rounded-full w-full font-medium">
+                    View Applicants:{" "}
+                    {job.applicantsUsername ? job.applicantsUsername.length : 0}
+                  </button>
+                </Link>
+                <Link
+                  className="w-[48%]"
+                  href={`/jobs/${jobid}/apply`}
+                  passHref
+                >
+                  <button className="bg-[#1d3fff]  py-3 px-4  min-w-fit  max-h-fit text-sm text-white border-none w-full rounded-full font-medium">
+                    Apply Now
+                  </button>
+                </Link>
+              </div>
               <hr className="mt-3 mb-3 opacity-30 " />
-              {detailedDescription && detailedDescription.detailedDescription ? 
-               <div
-               className="text-[#e9e9e9] text-md"
-               dangerouslySetInnerHTML={{ __html: detailedDescription.detailedDescription }}
-             ></div>: <></>
-              }
+              {detailedDescription &&
+              detailedDescription.detailedDescription ? (
+                <div
+                  className="text-[#e9e9e9] text-md"
+                  dangerouslySetInnerHTML={{
+                    __html: detailedDescription.detailedDescription,
+                  }}
+                ></div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

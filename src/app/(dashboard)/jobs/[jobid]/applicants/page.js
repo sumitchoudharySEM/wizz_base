@@ -1,17 +1,12 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { ApplicantProfile } from "@/components";
 import { useState, useEffect } from "react";
 import { useAccount, useReadContract } from "wagmi";
 import {
   JOBS_CONTRACT_ADDRESS,
-  CONTRACT_ADDRESS,
-  PINATA_JWT,
-  NEXT_PUBLIC_GATEWAY_URL,
 } from "../../../../constants";
 import abi from "../../../../contract/jobsabi.json";
-import abii from "../../../../contract/abi.json";
 import { useParams } from "next/navigation";
 
 const page = () => {
@@ -31,7 +26,6 @@ const page = () => {
     console.log("data:", data);
   }, [data, error]);
 
-
   return (
     <div className="ld:w-3/4   md:w-[80%] w-[85%] flex flex-col   p-4 pt-28">
       <div className="flex justify-between w-full">
@@ -47,13 +41,17 @@ const page = () => {
         data.applicantsUsername.map((item, index) => (
           <div key={index}>
             {data.employer == address ? (
-                  <ApplicantProfile item={item} isCreator={true} />
+              <ApplicantProfile item={item} isCreator={true} />
             ) : (
               <ApplicantProfile item={item} isCreator={false} />
             )}
           </div>
-        )) 
-      ) :  <></>}
+        ))
+      ) : (
+        <div className="text-white w-full mt-6 text-center font-semibold">
+          No Applicants Yet
+        </div>
+      )}
     </div>
   );
 };
