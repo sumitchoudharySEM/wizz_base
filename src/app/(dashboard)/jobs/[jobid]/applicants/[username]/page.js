@@ -107,17 +107,17 @@ const Page = () => {
                 {owner.bio}
               </div>
             </div>
-            <div className="flex flex-row justify-start ">
+            {/* <div className="flex flex-row justify-start ">
               <button className=" border-[1px] mr-4 py-2 max-w-32 border-[#028a1d] px-4 w-full max-h-fit text-sm text-[#028a1d]  rounded-full font-medium">
                 Accept
-              </button>
+              </button> */}
               {/* <button className=" border-[1px] mr-4 py-2 max-w-32 border-[#074bd4] px-4 w-full max-h-fit text-sm text-[#074bd4]  rounded-full font-normal">
                 Submitted
               </button> */}
-              <button className=" border-[1px] mr-4 py-2 max-w-32 border-[#d20404] px-4 w-full max-h-fit text-sm text-[#d20404]  rounded-full font-medium">
+              {/* <button className=" border-[1px] mr-4 py-2 max-w-32 border-[#d20404] px-4 w-full max-h-fit text-sm text-[#d20404]  rounded-full font-medium">
                 Reject
               </button>
-            </div>
+            </div> */}
             <hr className="opacity-40 my-4" />
             {detailedDescription && detailedDescription.applicationStatus ? (
               <div className="text-custom">

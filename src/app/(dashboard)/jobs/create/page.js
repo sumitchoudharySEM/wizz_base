@@ -61,6 +61,7 @@ const CreateJob = () => {
   }, [createJobData, createJobError]);
 
   const handleSubmission = async () => {
+  if(detailedDescriptionData !==undefined && detailedDescriptionData !==null){
     try {
       const detailedDescriptionData = {
         detailedDescription: job.detailedDiscription,
@@ -109,6 +110,7 @@ const CreateJob = () => {
       console.log(error);
       return null;
     }
+  }
   };
 
 
