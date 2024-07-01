@@ -14,19 +14,24 @@ import { metaMask } from 'wagmi/connectors'
 import { walletConnect } from 'wagmi/connectors'
 import { injected } from 'wagmi/connectors'
 
+const dAppMetadata = {
+  name: "Your DApp Name",
+  url: "https://yourdapp.com",
+};
+
 //rainbowkit config
+
+// walletConnect({
+//   projectId: '9b4a97010a2d03a05e71209f233ab457',
+// }),
+// metaMask(),
+// injected(),
 
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "9b4a97010a2d03a05e71209f233ab457",
   chains: [baseSepolia],
   connectors: [
-    
-    walletConnect({
-      projectId: '9b4a97010a2d03a05e71209f233ab457',
-    }),
-    metaMask(),
-    injected(),
     coinbaseWallet({ appName: 'Create Wagmi' })
   ],
   transports: {

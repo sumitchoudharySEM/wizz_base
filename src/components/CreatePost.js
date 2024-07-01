@@ -134,7 +134,6 @@ const CreatePost = ({ setClicked, userProfile }) => {
                     console.log("CID:", cid);
 
                     await createPostFun(cid);
-                    // window.location.reload();
                   } catch (error) {
                     console.log(error);
                     toast.error("Error creating post");

@@ -1,5 +1,5 @@
 "use client";
-import {BlueCreateWalletButton} from './smartWalletButton';
+import { BlueCreateWalletButton } from "./smartWalletButton";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
@@ -72,7 +72,9 @@ export default function Home() {
     console.log("createUserError:", createUserError);
     if (createUserData !== undefined) {
       toast.success("User created successfully");
-      location.reload();
+      if (window !== "undefined") {
+        location.reload();
+      }
     } else if (createUserError !== null) {
       toast.error("Error creating user");
     }
@@ -137,7 +139,7 @@ export default function Home() {
               <div className="w-48">
                 <div className="space-y-6  py-4 bottom-0 flex flex-col ">
                   <BlueCreateWalletButton />
-                  <ConnectButton />
+                  {/* <ConnectButton /> */}
                 </div>
               </div>
             </div>
