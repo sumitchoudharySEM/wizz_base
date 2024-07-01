@@ -9,7 +9,7 @@ import {
 import abi from "../../../../contract/jobsabi.json";
 import { useParams } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const { jobid } = useParams();
   const { address } = useAccount();
 
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

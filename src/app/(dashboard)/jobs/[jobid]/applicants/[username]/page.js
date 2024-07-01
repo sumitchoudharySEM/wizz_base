@@ -13,7 +13,7 @@ import abii from "../../../../../contract/abi.json";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   const { jobid, username } = useParams();
   const [url, setUrl] = useState();
   const [detailedDescription, setDetailedDescription] = useState();
@@ -169,4 +169,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

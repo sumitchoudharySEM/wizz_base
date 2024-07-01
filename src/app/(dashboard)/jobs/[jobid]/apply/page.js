@@ -6,7 +6,7 @@ import abi from "../../../../contract/jobsabi.json";
 import { redirect, useParams } from "next/navigation";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const { address } = useAccount();
   const { jobid } = useParams();
   const [application, setApplication] = useState({
@@ -196,4 +196,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

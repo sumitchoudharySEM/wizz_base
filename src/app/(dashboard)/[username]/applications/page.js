@@ -2,7 +2,7 @@
 import React from 'react'
 import { JobList } from "@/components";
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <JobList />
@@ -10,4 +10,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

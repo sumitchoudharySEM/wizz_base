@@ -7,7 +7,7 @@ import { CONTRACT_ADDRESS, NEXT_PUBLIC_GATEWAY_URL } from "../../../constants";
 import abi from "../../../contract/abi.json";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   const { username } = useParams();
 
   const { data: profileResource, error: isError } = useReadContract({
@@ -59,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
