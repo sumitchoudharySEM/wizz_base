@@ -7,7 +7,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider, http } from "wagmi";
-import { baseSepolia } from "wagmi/chains";
+import { flowTestnet, baseSepolia } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { coinbaseWallet } from 'wagmi/connectors';
 import { metaMask } from 'wagmi/connectors'
@@ -30,7 +30,7 @@ const dAppMetadata = {
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "9b4a97010a2d03a05e71209f233ab457",
-  chains: [baseSepolia],
+  chains: [flowTestnet],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 

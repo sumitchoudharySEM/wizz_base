@@ -8,7 +8,7 @@ import { RainbowProvider } from "@/context/RainbowKitContext";
 // import { ContractFuncProvider } from "@/context/ContractFuncWegmiContext";;
 
 import { WagmiProvider } from "wagmi";
-import { config } from "./wagmiconfig";
+// import { config } from "./wagmiconfig";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
