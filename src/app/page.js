@@ -8,6 +8,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { CONTRACT_ADDRESS, PINATA_JWT } from "./constants";
 import abi from "./contract/abi.json";
+import { error } from "console";
 
 export default function Home() {
   const { address } = useAccount();
@@ -77,6 +78,7 @@ export default function Home() {
       }
     } else if (createUserError !== null) {
       toast.error("Error creating user");
+      console.log(error)
     }
   }, [createUserData, createUserError]);
 
